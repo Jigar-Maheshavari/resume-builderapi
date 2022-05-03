@@ -40,7 +40,6 @@
     "@hapi/vision": "^5.5.4",
     "@hapi/wreck": "^16.0.1",
     "@octokit/rest": "^16.36.0",
-    "@tensorflow/tfjs-node": "3.3.0",
     "aws-sdk": "^2.686.0",
     "bcrypt": "5.0.0",
     "bluebird": "^3.7.2",
