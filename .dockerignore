@@ -1,0 +1,8 @@
+#exclude node modules in build
+node_modules
+.gitignore
+.eslintrc
+.env.example
+.editorconfig
+README.md 
+package-lock.json
