@@ -52,6 +52,7 @@
     "hapi-dev-errors": "^3.3.0",
     "hapi-swagger": "^11.1.0",
     "imap": "^0.8.19",
+    "joi": "^17.6.0",
     "joi-objectid": "^3.0.1",
     "jsdom": "^16.2.2",
     "jsonwebtoken": "^8.5.1",

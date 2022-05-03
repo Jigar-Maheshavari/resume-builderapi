@@ -154,4 +154,3 @@ UserSchema.statics = {
 }
 
 exports.schema = dbConn.model(modelName, UserSchema)
-s
