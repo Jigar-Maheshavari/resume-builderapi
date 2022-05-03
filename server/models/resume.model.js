@@ -47,7 +47,15 @@ const ResumeSchema = new Schema(
       type: Types.String,
       required: true
     },
-    qualificatipon: {
+    objective: {
+      type: Types.String,
+      required: true
+    },
+    dateOfBirth: {
+      type: Types.Date,
+      required: true
+    },
+    qulification: {
       type: Types.Array,
       default: []
     },
@@ -59,15 +67,11 @@ const ResumeSchema = new Schema(
       type: Types.Array,
       default: []
     },
-    skillSets: {
-      type: Types.Array,
-      default: []
-    },
     projects: {
       type: Types.Array,
       default: []
     },
-    Honors:{
+    Honors: {
       type: Types.Array,
       default: []
     },

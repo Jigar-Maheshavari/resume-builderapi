@@ -47,6 +47,14 @@ const UserSchema = new Schema(
       type: Types.Boolean,
       default: false
     },
+    emailToken: {
+      type: Types.String,
+      default: false
+    },
+    emailTokenExpireAt: {
+      type: Types.Date,
+      default: null
+    },
     createdAt: {
       type: Types.Date,
       default: null

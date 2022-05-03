@@ -28,7 +28,6 @@ module.exports = {
           .required()
           .trim()
           .label('Password'),
-        mobileNumber: Joi.number().label('MobileNumbe')
       })
     },
     pre: [
@@ -44,7 +43,45 @@ module.exports = {
             if (existUser) {
               return 'email already exist'
             } else {
-              return await User.create(payload)
+              const user = await User.create(payload)
+              const emailHash = await User.generateHash()
+              user.emailToken = emailHash.hash
+              await User.findOneAndUpdate(
+                { _id: user._id },
+                {
+                  emailToken: emailHash.hash,
+                  emailTokenExpireAt: DateTime.utc()
+                    .plus({
+                      hours: parseInt(config.constants.VERIFICATION_EXPIRATION_PERIOD)
+                    })
+                    .toISO()
+                }
+              )
+              const id = Helper.encodeBase64(`${user._id}:${user.emailToken}`)
+              const mailObj = {
+                to: user.email,
+                subject: `Verify Your Account`,
+                html: template.commonTemplate({
+                  title: `Welcome ${user.firstName} ${user.lastName},`,
+                  message: `
+                  Your account has been created. Click <a style=${template.linkStyle
+                    } href=${config.console_url}/auth/verify-account/${id} target="_blank">here</a> to verify your account.`
+                })
+              }
+              const res = await Helper.sendEmail(mailObj)
+              if (res && res.accepted && res.accepted.length) {
+                await User.findOneAndUpdate(
+                  { _id: user._id },
+                  {
+                    verifyEmailSent: true,
+                    emailTokenExpireAt: DateTime.utc()
+                      .plus({
+                        hours: parseInt(config.constants.VERIFICATION_EXPIRATION_PERIOD)
+                      })
+                      .toISO()
+                  }
+                )
+              }
             }
           } catch (err) {
             errorHelper.handleError(err)
@@ -83,7 +120,7 @@ module.exports = {
               } else {
                 errorHelper.handleError(
                   Boom.badRequest(
-                    'Please contact admin for account verification'
+                    'Please verify your email'
                   )
                 )
               }
@@ -204,6 +241,70 @@ module.exports = {
       return h.response(request.pre.updateUser).code(201)
     }
   },
+  resendEmail: {
+    validate: {
+      payload: Joi.object().keys({
+        id: Joi.string()
+          .required()
+          .trim()
+          .label('id')
+      })
+    },
+    pre: [
+      {
+        assign: 'user',
+        method: async (request, h) => {
+          const { payload, query } = request
+          try {
+            const user = await User.findOne({ _id: payload.id })
+            if (user) {
+              if (query.inactiveAccount === 'true') {
+                if (user.isDeleted) {
+                  const { userService } = request.server.services()
+                  return await userService.sendVerificationEmailToInactiveUser(user)
+                } else {
+                  errorHelper.handleError({
+                    status: 400,
+                    code: 'bad_request',
+                    message: 'User already active with this email address.'
+                  })
+                }
+              } else {
+                if (!user.emailVerified) {
+                  const { userService } = request.server.services()
+                  return await userService.sendVerificationEmailToUser(user)
+                } else {
+                  errorHelper.handleError({
+                    status: 400,
+                    code: 'bad_request',
+                    message: 'User already verified email address.'
+                  })
+                }
+              }
+            } else {
+              errorHelper.handleError({
+                status: 400,
+                code: 'bad_request',
+                message: 'User does not exist.'
+              })
+            }
+          } catch (err) {
+            errorHelper.handleError(err)
+          }
+        }
+      }
+    ],
+    handler: async (request, h) => {
+      try {
+        const {
+          pre: { user }
+        } = request
+        return h.response(user).code(200)
+      } catch (err) {
+        errorHelper.handleError(err)
+      }
+    }
+  },
   users: {
     validate: {
       headers: helper.apiHeaders()
@@ -256,7 +357,122 @@ module.exports = {
       }
     },
   },
+  emailVerified: {
+    validate: {
+      payload: Joi.object().keys({
+        id: Joi.string()
+          .required()
+          .trim()
+          .label('User Id')
+      })
+    },
+    pre: [],
 
+    handler: async (request, h) => {
+      try {
+        const { payload } = request
+        const user = await User.findOne({ _id: payload.id })
+        if (user) {
+          if (!user.isAccountVerified) {
+            errorHelper.handleError({
+              status: 400,
+              code: 'bad_request',
+              message:
+                'Verification is still pending, please verify your email account first.'
+            })
+          }
+          return h.response(true).code(200)
+        } else {
+          errorHelper.handleError({
+            status: 400,
+            code: 'bad_request',
+            message: 'User not found.'
+          })
+        }
+      } catch (err) {
+        errorHelper.handleError(err)
+      }
+    }
+  },
+  verifyEmail: {
+    validate: {
+      payload: Joi.object().keys({
+        id: Joi.string()
+          .required()
+          .trim()
+          .label('User Id')
+      })
+    },
+    pre: [
+      {
+        assign: 'user',
+        method: async (request, h) => {
+          const { payload } = request
+          try {
+            const id = generalHelper.decodeBase64(payload.id)
+            if (id.split(':')[0] && id.split(':')[1]) {
+              return await User.findOne({
+                _id: id.split(':')[0]
+              })
+            } else {
+              errorHelper.handleError(errors.user.userNotExist)
+            }
+          } catch (err) {
+            errorHelper.handleError(err)
+          }
+        }
+      }
+    ],
+    handler: async (request, h) => {
+      try {
+        const {
+          payload,
+          pre: { user }
+        } = request
+        const id = generalHelper.decodeBase64(payload.id)
+        if (user && user.emailVerified) {
+          return h
+            .response({
+              message: 'Account already verified!..'
+            })
+            .code(200)
+        }
+        if (user) {
+          if (
+            user.emailTokenExpireAt &&
+            user.emailToken === id.split(':')[1]
+          ) {
+            if (moment().isBefore(user.emailTokenExpireAt)) {
+              user.emailVerified = true
+              user.emailToken = null
+              await user.save()
+              return h
+                .response({
+                  message: 'Account activated successfully!..'
+                })
+                .code(200)
+            } else {
+              errorHelper.handleError({
+                status: 400,
+                code: 'link_expired',
+                message: 'Link is expired.'
+              })
+            }
+          } else {
+            errorHelper.handleError({
+              status: 400,
+              code: 'link_expired',
+              message: 'Link is invalid.'
+            })
+          }
+        } else {
+          errorHelper.handleError(errors.user.userNotExist)
+        }
+      } catch (err) {
+        errorHelper.handleError(err)
+      }
+    }
+  },
   activateEmpAcc: {
     validate: {
       headers: helper.apiHeaders(),
