@@ -3,140 +3,36 @@
 const config = require('config')
 
 const commonTemplate = configObj => {
-    return `
-    <body>
-    <div class="main-container" style="max-width: 640px; width: 100%; background-color: #fff; height: 100%; min-height: 500px; padding: 32px;">
-        <div class="inner-container" style="width: 100%; padding: 32px;">
-            <table style="width: 100%;">
-                <tbody>
-                    <tr>
-                        <td>
-                            <table>
-                                <tbody>
-                                    <tr><td><img src="${config.constants.S3_BASE_URL}/email-template-images/new_bg_logo2.jpg" style="max-width: 171px;"/></td></tr>
-                                </tbody>
-                            </table>
-                        </td>
-                    </tr>
-                    <tr><td style="height: 24px;"></td></tr>
-                    <tr><td style="height: 16px;"></td></tr>
-                    <tr>
-                        <td>
-                            <table>
-                                <tbody>
-                                    <tr><td style="font-weight: 700; font-size: 24px;">${configObj.title}</td></tr>
-                                </tbody>
-                            </table>
-                        </td>
-                    </tr>
-                    <tr><td style="height: 16px;"></td></tr>
-                    <tr>
-                        <td>
-                            <table>
-                                <tbody>
-                                    <tr>
-                                        <td style="font-weight: 400; font-size: 16px;">
-                                        ${configObj.message}
-                                        </td>
-                                        <!-- <td style="font-weight: 400; font-size: 16px;">The purpose of these resources is to acquaint you with the tools and resources that Virtuous AI provides developers, 
-                                            managers, and auditors to create AI that is trustworthy: this includes Responsibly built, Equitable, Governable, Reliable, 
-                                            and Traceable (#noREGRet). <a style="font-weight: 500; font-size: 16px; text-decoration: underline; color: #0079CF; cursor: pointer;">Learn more</a>
-                                        </td> -->
-                                    </tr>
-                                </tbody>
-                            </table>
-                        </td>
-                    </tr>
-                    <tr><td style="height: 16px;"></td></tr>
-                    <tr><td style="height: 16px;"></td></tr>
-                    <tr>
-                        <td>
-                            <table>
-                                <tbody>
-                                    <tr>
-                                        <td style="font-weight: 400; font-size: 16px;">
-                                            Best Regards,
-                                        </td>
-                                    </tr>
-                                </tbody>
-                            </table>
-                        </td>
-                    </tr>
-                    <tr><td style="height: 16px;"></td></tr>
-                    <tr>
-                        <td>
-                            <table>
-                                <tbody>
-                                    <tr>
-                                        <td style="font-weight: 400; font-size: 16px;">
-                                            Virtuous AI
-                                        </td>
-                                    </tr>
-                                </tbody>
-                            </table>
-                        </td>
-                    </tr>
-                    <tr><td style="height: 32px;"></td></tr>
-                    <tr><td style="height: 1px; background-color: rgba(0, 0, 0, 0.24);"></td></tr>
-                    <tr><td style="height: 27px;"></td></tr>
-                    <tr>
-                        <td>
-                            <table>
-                                <tbody>
-                                    <tr>
-                                        <td>
-                                          <a href="https://twitter.com/virtuousai" target="_blank">
-                                              <img src="${config.constants.S3_BASE_URL}/email-template-images/new_twitter.png" style="max-width: 18px; margin-right: 28px;"/>
-                                          </a>
-                                          <a href="https://www.facebook.com/VirtuousAIOfficial" target="_blank">
-                                              <img src="${config.constants.S3_BASE_URL}/email-template-images/new_fb.png" style="max-width: 18px; margin-right: 28px;"/>
-                                          </a>                                        
-                                          <a href="https://www.linkedin.com/company/virtuousai" target="_blank">
-                                              <img src="${config.constants.S3_BASE_URL}/email-template-images/new_linkdin.png" style="max-width: 18px; margin-right: 28px;"/>
-                                          </a>
-                                        </td>
-                                    </tr>
-                                </tbody>
-                            </table>
-                        </td>
-                    </tr>
-                    <tr><td style="height: 27px;"></td></tr>
-                    <tr>
-                        <td>
-                            <table>
-                                <tbody>
-                                    <tr>
-                                        <td><img src="${config.constants.S3_BASE_URL}/email-template-images/icon.png" style="max-width: 52px;"/></td>
-                                    </tr>
-                                </tbody>
-                            </table>
-                        </td>
-                    </tr>
-                    <tr><td style="height: 5px;"></td></tr>
-                    <tr>
-                        <td>
-                            <table>
-                                <tbody>
-                                    <tr>
-                                        <td style="font-weight: 400; font-size: 12px;">
-                                            Copyright © ${new Date().getFullYear()} VirtuousAI
-                                        </td>
-                                    </tr>
-                                </tbody>
-                            </table>
-                        </td>
-                    </tr>
-                </tbody>
-            </table>
-        </div>
-    </div>
-</body>
+  return `<!DOCTYPE  html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+    <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en"><head><meta http-equiv="Content-Type" content="text/html; charset=utf-8"/><title>file_1651621872467</title><meta name="author" content="Himanshu Sharma"/><style type="text/css"> * {margin:0; padding:0; text-indent:0; }
+     .s1 { color: black; font-family:"Arial Black", sans-serif; font-style: normal; font-weight: normal; text-decoration: none; font-size: 20pt; }
+     .s2 { color: black; font-family:"Calibri Light", sans-serif; font-style: normal; font-weight: normal; text-decoration: underline; font-size: 12pt; }
+     .s3 { color: black; font-family:"Calibri Light", sans-serif; font-style: normal; font-weight: normal; text-decoration: none; font-size: 12pt; }
+     .a, a { color: black; font-family:"Calibri Light", sans-serif; font-style: normal; font-weight: normal; text-decoration: none; font-size: 12pt; }
+     p { color: black; font-family:Calibri, sans-serif; font-style: normal; font-weight: bold; text-decoration: none; font-size: 12pt; margin:0pt; }
+     .s4 { color: black; font-family:Calibri, sans-serif; font-style: normal; font-weight: bold; text-decoration: none; font-size: 12pt; }
+     .s5 { color: black; font-family:Calibri, sans-serif; font-style: normal; font-weight: normal; text-decoration: none; font-size: 12pt; }
+     .s6 { color: #212121; font-family:Calibri, sans-serif; font-style: normal; font-weight: normal; text-decoration: none; font-size: 12pt; }
+     .s7 { color: black; font-family:Calibri, sans-serif; font-style: normal; font-weight: normal; text-decoration: none; font-size: 12pt; }
+     h1 { color: black; font-family:Calibri, sans-serif; font-style: normal; font-weight: bold; text-decoration: underline; font-size: 12pt; }
+     li {display: block; }
+     #l1 {padding-left: 0pt; }
+     #l1> li>*:first-child:before {content: "• "; color: black; font-family:Arial, sans-serif; font-style: normal; font-weight: normal; text-decoration: none; font-size: 11pt; }
+     #l2 {padding-left: 0pt; }
+     #l2> li>*:first-child:before {content: " "; color: black; font-family:Symbol, serif; font-style: normal; font-weight: normal; text-decoration: none; font-size: 12pt; }
+     table, tbody {vertical-align: top; overflow: visible; }
+    </style></head><body><p class="s1" style="padding-top: 3pt;padding-left: 12pt;text-indent: 0pt;text-align: left;">Jigar Maheshvari</p><p class="s2" style="padding-left: 12pt;text-indent: 0pt;text-align: left;">Mobile<span class="s3"> : +91-7698194123</span></p><p class="s2" style="padding-left: 12pt;text-indent: 0pt;text-align: left;">Email <a href="mailto:jigarmaheshvari5@gmail.com" class="a" target="_blank">: </a><a href="mailto:jigarmaheshvari5@gmail.com" target="_blank">jigarmaheshvari5@gmail.com</a></p><p style="text-indent: 0pt;text-align: left;"><br/></p><p style="padding-top: 1pt;padding-left: 1pt;text-indent: 0pt;margin: 8px;
+        border-bottom: 2px solid black;
+        border-top: 2px solid black;
+        background-color:#D3D3D3;
+        padding: 8px;"><span style=" color: #272727; font-family:Calibri, sans-serif; font-style: normal; font-weight: bold; text-decoration: none; font-size: 14pt;">CAREER OBJECTIVE</span></p><p style="padding-left: 10pt;text-indent: 0pt;text-align: left;"/><p style="text-indent: 0pt;text-align: left;"><br/></p><p style="padding-top: 2pt;padding-left: 12pt;text-indent: 0pt;line-height: 107%;text-align: left;">To obtain a position that will allow me to utilize my technical skills and willingness to learn in making a organization successful.</p><p style="text-indent: 0pt;text-align: left;"><br/></p><p style="padding-top: 1pt;padding-left: 1pt;text-indent: 0pt;text-align: left;"><span style=" color: #272727; font-family:Calibri, sans-serif; font-style: normal; font-weight: bold; text-decoration: none; font-size: 14pt;">ACADEMICS</span></p><p style="padding-left: 10pt;text-indent: 0pt;text-align: left;"/><p style="text-indent: 0pt;text-align: left;"><br/></p><table style="border-collapse:collapse;margin-left:6.63pt" cellspacing="0"><tr style="height:30pt"><td style="width:101pt;border-top-style:solid;border-top-width:2pt;border-left-style:solid;border-left-width:2pt;border-bottom-style:solid;border-bottom-width:2pt;border-bottom-color:#666666;border-right-style:solid;border-right-width:1pt;border-right-color:#999999"><p class="s4" style="padding-left: 24pt;text-indent: 4pt;line-height: 15pt;text-align: left;">Degree / Certificate</p></td><td style="width:100pt;border-top-style:solid;border-top-width:2pt;border-left-style:solid;border-left-width:1pt;border-left-color:#999999;border-bottom-style:solid;border-bottom-width:2pt;border-bottom-color:#666666;border-right-style:solid;border-right-width:1pt;border-right-color:#999999"><p class="s4" style="padding-top: 7pt;padding-left: 9pt;padding-right: 7pt;text-indent: 0pt;text-align: center;">School / College</p></td><td style="width:101pt;border-top-style:solid;border-top-width:2pt;border-left-style:solid;border-left-width:1pt;border-left-color:#999999;border-bottom-style:solid;border-bottom-width:2pt;border-bottom-color:#666666;border-right-style:solid;border-right-width:1pt;border-right-color:#999999"><p class="s4" style="padding-left: 25pt;text-indent: 6pt;line-height: 15pt;text-align: left;">Board / University</p></td><td style="width:101pt;border-top-style:solid;border-top-width:2pt;border-left-style:solid;border-left-width:1pt;border-left-color:#999999;border-bottom-style:solid;border-bottom-width:2pt;border-bottom-color:#666666;border-right-style:solid;border-right-width:1pt;border-right-color:#999999"><p class="s4" style="padding-top: 7pt;padding-left: 12pt;padding-right: 10pt;text-indent: 0pt;text-align: center;">Year of Passing</p></td><td style="width:101pt;border-top-style:solid;border-top-width:2pt;border-left-style:solid;border-left-width:1pt;border-left-color:#999999;border-bottom-style:solid;border-bottom-width:2pt;border-bottom-color:#666666;border-right-style:solid;border-right-width:2pt"><p class="s4" style="padding-left: 36pt;text-indent: -18pt;line-height: 15pt;text-align: left;">Percentage / CGPA</p></td></tr><tr style="height:85pt"><td style="width:101pt;border-top-style:solid;border-top-width:2pt;border-top-color:#666666;border-left-style:solid;border-left-width:2pt;border-bottom-style:solid;border-bottom-width:1pt;border-bottom-color:#999999;border-right-style:solid;border-right-width:1pt;border-right-color:#999999"><p style="text-indent: 0pt;text-align: left;"><br/></p><p class="s4" style="padding-left: 34pt;padding-right: 33pt;text-indent: 0pt;text-align: center;">B.E</p></td><td style="width:100pt;border-top-style:solid;border-top-width:2pt;border-top-color:#666666;border-left-style:solid;border-left-width:1pt;border-left-color:#999999;border-bottom-style:solid;border-bottom-width:1pt;border-bottom-color:#999999;border-right-style:solid;border-right-width:1pt;border-right-color:#999999"><p style="text-indent: 0pt;text-align: left;"><br/></p><p class="s5" style="padding-left: 9pt;padding-right: 7pt;text-indent: 0pt;text-align: center;">Alpha College of Engineering &amp; technology.</p></td><td style="width:101pt;border-top-style:solid;border-top-width:2pt;border-top-color:#666666;border-left-style:solid;border-left-width:1pt;border-left-color:#999999;border-bottom-style:solid;border-bottom-width:1pt;border-bottom-color:#999999;border-right-style:solid;border-right-width:1pt;border-right-color:#999999"><p style="text-indent: 0pt;text-align: left;"><br/></p><p class="s6" style="padding-top: 8pt;padding-left: 12pt;padding-right: 10pt;text-indent: 0pt;text-align: center;">Gujarat Technological University(GTU)</p></td><td style="width:101pt;border-top-style:solid;border-top-width:2pt;border-top-color:#666666;border-left-style:solid;border-left-width:1pt;border-left-color:#999999;border-bottom-style:solid;border-bottom-width:1pt;border-bottom-color:#999999;border-right-style:solid;border-right-width:1pt;border-right-color:#999999"><p style="text-indent: 0pt;text-align: left;"><br/></p><p class="s5" style="padding-left: 12pt;padding-right: 10pt;text-indent: 0pt;text-align: center;">Expected(2022)</p></td><td style="width:101pt;border-top-style:solid;border-top-width:2pt;border-top-color:#666666;border-left-style:solid;border-left-width:1pt;border-left-color:#999999;border-bottom-style:solid;border-bottom-width:1pt;border-bottom-color:#999999;border-right-style:solid;border-right-width:2pt"><p style="text-indent: 0pt;text-align: left;"><br/></p><p class="s5" style="padding-left: 30pt;text-indent: 0pt;text-align: left;">9.56 CPI</p></td></tr><tr style="height:37pt"><td style="width:101pt;border-top-style:solid;border-top-width:1pt;border-top-color:#999999;border-left-style:solid;border-left-width:2pt;border-bottom-style:solid;border-bottom-width:1pt;border-bottom-color:#999999;border-right-style:solid;border-right-width:1pt;border-right-color:#999999"><p style="text-indent: 0pt;text-align: left;"><br/></p><p class="s4" style="padding-left: 35pt;padding-right: 33pt;text-indent: 0pt;text-align: center;">HSC</p></td><td style="width:100pt;border-top-style:solid;border-top-width:1pt;border-top-color:#999999;border-left-style:solid;border-left-width:1pt;border-left-color:#999999;border-bottom-style:solid;border-bottom-width:1pt;border-bottom-color:#999999;border-right-style:solid;border-right-width:1pt;border-right-color:#999999"><p style="text-indent: 0pt;text-align: left;"><br/></p><p class="s5" style="padding-left: 9pt;padding-right: 7pt;text-indent: 0pt;text-align: center;">Vishva Vidyalaya</p></td><td style="width:101pt;border-top-style:solid;border-top-width:1pt;border-top-color:#999999;border-left-style:solid;border-left-width:1pt;border-left-color:#999999;border-bottom-style:solid;border-bottom-width:1pt;border-bottom-color:#999999;border-right-style:solid;border-right-width:1pt;border-right-color:#999999"><p style="text-indent: 0pt;text-align: left;"><br/></p><p class="s5" style="padding-left: 38pt;text-indent: 0pt;text-align: left;">GSEB</p></td><td style="width:101pt;border-top-style:solid;border-top-width:1pt;border-top-color:#999999;border-left-style:solid;border-left-width:1pt;border-left-color:#999999;border-bottom-style:solid;border-bottom-width:1pt;border-bottom-color:#999999;border-right-style:solid;border-right-width:1pt;border-right-color:#999999"><p style="text-indent: 0pt;text-align: left;"><br/></p><p class="s5" style="padding-left: 12pt;padding-right: 10pt;text-indent: 0pt;text-align: center;">2018</p></td><td style="width:101pt;border-top-style:solid;border-top-width:1pt;border-top-color:#999999;border-left-style:solid;border-left-width:1pt;border-left-color:#999999;border-bottom-style:solid;border-bottom-width:1pt;border-bottom-color:#999999;border-right-style:solid;border-right-width:2pt"><p style="text-indent: 0pt;text-align: left;"><br/></p><p class="s5" style="padding-left: 35pt;padding-right: 33pt;text-indent: 0pt;text-align: center;">66.5%</p></td></tr><tr style="height:54pt"><td style="width:101pt;border-top-style:solid;border-top-width:1pt;border-top-color:#999999;border-left-style:solid;border-left-width:2pt;border-bottom-style:solid;border-bottom-width:2pt;border-right-style:solid;border-right-width:1pt;border-right-color:#999999"><p style="text-indent: 0pt;text-align: left;"><br/></p><p class="s4" style="padding-left: 35pt;padding-right: 33pt;text-indent: 0pt;text-align: center;">SSC</p></td><td style="width:100pt;border-top-style:solid;border-top-width:1pt;border-top-color:#999999;border-left-style:solid;border-left-width:1pt;border-left-color:#999999;border-bottom-style:solid;border-bottom-width:2pt;border-right-style:solid;border-right-width:1pt;border-right-color:#999999"><p style="text-indent: 0pt;text-align: left;"><br/></p><p class="s5" style="padding-left: 24pt;text-indent: 8pt;text-align: left;">Revaba VidyaVihar</p></td><td style="width:101pt;border-top-style:solid;border-top-width:1pt;border-top-color:#999999;border-left-style:solid;border-left-width:1pt;border-left-color:#999999;border-bottom-style:solid;border-bottom-width:2pt;border-right-style:solid;border-right-width:1pt;border-right-color:#999999"><p style="text-indent: 0pt;text-align: left;"><br/></p><p class="s5" style="padding-left: 38pt;text-indent: 0pt;text-align: left;">GSEB</p></td><td style="width:101pt;border-top-style:solid;border-top-width:1pt;border-top-color:#999999;border-left-style:solid;border-left-width:1pt;border-left-color:#999999;border-bottom-style:solid;border-bottom-width:2pt;border-right-style:solid;border-right-width:1pt;border-right-color:#999999"><p style="text-indent: 0pt;text-align: left;"><br/></p><p class="s5" style="padding-left: 12pt;padding-right: 10pt;text-indent: 0pt;text-align: center;">2016</p></td><td style="width:101pt;border-top-style:solid;border-top-width:1pt;border-top-color:#999999;border-left-style:solid;border-left-width:1pt;border-left-color:#999999;border-bottom-style:solid;border-bottom-width:2pt;border-right-style:solid;border-right-width:2pt"><p style="text-indent: 0pt;text-align: left;"><br/></p><p class="s5" style="padding-left: 35pt;padding-right: 33pt;text-indent: 0pt;text-align: center;">79%</p></td></tr></table><p style="text-indent: 0pt;text-align: left;"><br/></p><p style="padding-top: 1pt;padding-left: 1pt;text-indent: 0pt;text-align: left;"><span style=" color: #272727; font-family:Calibri, sans-serif; font-style: normal; font-weight: bold; text-decoration: none; font-size: 14pt;">TECHNICAL SKILLS</span></p><p style="padding-left: 10pt;text-indent: 0pt;text-align: left;"/><ul id="l1"><li data-list-text="•"><p style="padding-top: 6pt;padding-left: 30pt;text-indent: -18pt;text-align: left;">Languages<span class="s7">: Basics of </span>C , C++ , Python , Core Java , HTML , CSS , JavaScript and php</p></li><li data-list-text="•"><p style="padding-top: 3pt;padding-left: 30pt;text-indent: -18pt;text-align: left;">Application Tools<span class="s7">: Microsoft Office 2013,IDE (</span>Net beans , Eclipse , Visual Studio code<span class="s7">)</span></p></li><li data-list-text="•"><p style="padding-top: 3pt;padding-left: 30pt;text-indent: -18pt;text-align: left;">Database: MySQL</p><p style="text-indent: 0pt;text-align: left;"><br/></p><p style="padding-top: 1pt;padding-left: 1pt;text-indent: 0pt;text-align: left;"><span style=" color: #272727; font-family:Calibri, sans-serif; font-style: normal; font-weight: bold; text-decoration: none; font-size: 14pt;">SOFT SKILLS</span></p><p style="padding-left: 10pt;text-indent: 0pt;text-align: left;"/><ul id="l2"><li data-list-text=""><p style="padding-top: 6pt;padding-left: 43pt;text-indent: -13pt;line-height: 15pt;text-align: left;">Flexibility</p></li><li data-list-text=""><p style="padding-left: 43pt;text-indent: -13pt;line-height: 15pt;text-align: left;">Communication</p></li><li data-list-text=""><p style="padding-left: 43pt;text-indent: -13pt;line-height: 15pt;text-align: left;">Responsibiity</p><p style="padding-left: 1pt;text-indent: 0pt;text-align: left;"><span style=" color: #272727; font-family:Calibri, sans-serif; font-style: normal; font-weight: bold; text-decoration: none; font-size: 14pt;">PROJECTS</span></p><p style="padding-left: 10pt;text-indent: 0pt;text-align: left;"/><p style="text-indent: 0pt;text-align: left;"><br/></p><h1 style="padding-top: 2pt;padding-left: 12pt;text-indent: 0pt;text-align: left;">TOPIC (ToDo list)</h1><p style="text-indent: 0pt;text-align: left;"><br/></p><p style="padding-top: 2pt;padding-left: 48pt;text-indent: 0pt;text-align: left;">I have created ToDo list kind of Dynamic website in which user have to login and can manage his tasks by writing them in simple UI using HTML, CSS, JavaScipt and php as a backend language. Website:</p><p style="text-indent: 0pt;text-align: left;"><br/></p><h1 style="padding-left: 12pt;text-indent: 0pt;text-align: left;">TOPIC (Advanced Fire Safety)</h1><p style="text-indent: 0pt;text-align: left;"><br/></p><p style="padding-top: 2pt;padding-left: 48pt;text-indent: 0pt;text-align: left;">I have created Advanced Fire Safety which IoT based application in which one device embedded through electricity facility and send it’s location to the fire station application through cloud.</p><p style="text-indent: 0pt;text-align: left;"><br/></p><h1 style="padding-left: 12pt;text-indent: 0pt;text-align: left;">TOPIC (Alpha-CET)</h1><p style="text-indent: 0pt;text-align: left;"><br/></p><p style="padding-top: 2pt;padding-left: 48pt;text-indent: 0pt;text-align: left;">I have created one application using Android Studio in which students can download their syllabus and best material for respective subject and the main websites of University.</p><p style="text-indent: 0pt;text-align: left;"><br/></p><p style="padding-top: 1pt;padding-left: 1pt;text-indent: 0pt;text-align: left;"><span style=" color: #272727; font-family:&quot;Calibri Light&quot;, sans-serif; font-style: normal; font-weight: normal; text-decoration: none; font-size: 12pt;">EXTRA-CURRICULAR</span></p><p style="padding-left: 10pt;text-indent: 0pt;text-align: left;"/></li><li data-list-text=""><p style="padding-top: 6pt;padding-left: 48pt;text-indent: -18pt;text-align: left;">I have done web development course and Basics of C, C++ and Core Java course in C-DAC</p></li></ul></li></ul><p style="text-indent: 0pt;text-align: left;"><br/></p><p style="padding-top: 1pt;padding-left: 1pt;text-indent: 0pt;text-align: left;"><span style=" color: #272727; font-family:Calibri, sans-serif; font-style: normal; font-weight: bold; text-decoration: none; font-size: 14pt;">PERSONAL INFORMATION</span></p><p style="padding-left: 10pt;text-indent: 0pt;text-align: left;"/><p style="text-indent: 0pt;text-align: left;"><br/></p><p style="padding-top: 2pt;padding-left: 12pt;text-indent: 0pt;text-align: left;">Date of Birth    :  18 August 2001 Nationality     :  Indian</p><p style="padding-left: 12pt;text-indent: 0pt;line-height: 15pt;text-align: left;">Language Known  :  Can Speak, Read &amp; Write English, Hindi and Gujarati</p></body></html>
+    
     `
 }
 
 const linkStyle = `font-weight: 500; font-size: 16px; text-decoration: underline; color: #0079CF; cursor: pointer;`
 
 module.exports = {
-    commonTemplate,
-    linkStyle
+  commonTemplate,
+  linkStyle
 }

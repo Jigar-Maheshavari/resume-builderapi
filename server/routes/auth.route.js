@@ -23,54 +23,6 @@ module.exports = {
         },
         {
           method: 'POST',
-          path: '/email-verified',
-          config: {
-            auth: null,
-            plugins: {
-              policies: ['log.policy']
-            },
-            tags: ['api', 'Authentication'],
-            description: 'Email Verified',
-            notes: 'Email Verified',
-            validate: API.emailVerified.validate,
-            pre: API.emailVerified.pre,
-            handler: API.emailVerified.handler
-          }
-        },
-        {
-          method: 'POST',
-          path: '/verify-email',
-          config: {
-            auth: null,
-            plugins: {
-              policies: ['log.policy']
-            },
-            tags: ['api', 'Authentication'],
-            description: 'Verify email',
-            notes: 'Verify email',
-            validate: API.verifyEmail.validate,
-            pre: API.verifyEmail.pre,
-            handler: API.verifyEmail.handler
-          }
-        },
-        {
-          method: 'POST',
-          path: '/resend-email-for-verification',
-          config: {
-            auth: null,
-            plugins: {
-              policies: ['log.policy']
-            },
-            tags: ['api', 'Authentication'],
-            description: 'Resend Email',
-            notes: 'Resend Email',
-            validate: API.resendEmail.validate,
-            pre: API.resendEmail.pre,
-            handler: API.resendEmail.handler
-          }
-        },
-        {
-          method: 'POST',
           path: '/login',
           config: {
             auth: null,

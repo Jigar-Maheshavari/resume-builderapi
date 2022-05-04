@@ -3,11 +3,11 @@
 module.exports = {
   plugin: {
     async register(server, options) {
-      const API = require('../api/reusume.api')
+      const API = require('../api/resume.api')
       server.route([
         {
           method: 'POST',
-          path: '/reusume',
+          path: '/resume',
           config: {
             auth: null,
             plugins: {
@@ -36,10 +36,10 @@ module.exports = {
             pre: API.getAllUserResume.pre,
             handler: API.getAllUserResume.handler
           }
-        },
+        }
       ])
     },
     version: require('../../package.json').version,
-    name: 'users-route'
+    name: 'resume-route'
   }
 }

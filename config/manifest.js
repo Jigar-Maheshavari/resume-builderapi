@@ -146,6 +146,7 @@ plugins = plugins.concat([
 
 const routesAdminOb = {
   'auth.route': '',
+  'resume.route': ''
 }
 
 const routesAdmin = Object.keys(routesAdminOb)

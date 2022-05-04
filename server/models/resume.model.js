@@ -24,36 +24,29 @@ const ResumeSchema = new Schema(
   {
     user: {
       type: Types.ObjectId,
-      ref: 'user',
-      required: true
+      ref: 'user'
     },
     firstName: {
-      type: Types.String,
-      required: true
+      type: Types.String
     },
     lastName: {
-      type: Types.String,
-      required: true
+      type: Types.String
     },
     email: {
-      type: Types.String,
-      required: true
+      type: Types.String
     },
     mobileNumber: {
       type: Types.Number,
       default: null
     },
     address: {
-      type: Types.String,
-      required: true
+      type: Types.String
     },
     objective: {
-      type: Types.String,
-      required: true
+      type: Types.String
     },
     dateOfBirth: {
-      type: Types.Date,
-      required: true
+      type: Types.Date
     },
     qulification: {
       type: Types.Array,

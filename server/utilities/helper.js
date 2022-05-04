@@ -1,6 +1,6 @@
 'use strict'
 
-const Joi = require('@hapi/joi')
+const Joi = require('joi')
 Joi.objectId = Joi.string
 const Boom = require('@hapi/boom')
 const config = require('config')
@@ -124,7 +124,7 @@ const mailGunSendMail = mailObj => {
       }
 
       try {
-        mailGun.messages().send(data, function (error, body) {
+        mailGun.messages().send(data, function(error, body) {
           if (error) {
             reject(error)
           }
@@ -250,7 +250,7 @@ const loggerFiles = {
   models: 'logs/models.log',
   mlcallback: 'logs/mlcallback.log',
   stress: 'logs/stress.log',
-  cron: 'logs/cron.log',
+  cron: 'logs/cron.log'
 }
 
 const log = (file, customLabel, log) => {
@@ -578,48 +578,39 @@ const parseJson = string => {
   }
 }
 
-
 const sortData = (data, key, type, isAsc) => {
   let sortedData = []
   switch (type) {
     case 'number':
       sortedData = data.sort((a, b) => {
-        return isAsc
-          ? a[key] - b[key]
-          : b[key] - a[key];
-      });
-      break;
+        return isAsc ? a[key] - b[key] : b[key] - a[key]
+      })
+      break
     case 'date':
       sortedData = data.sort((a, b) => {
         const bDate = new Date(b[key])
         const aDate = new Date(a[key])
-        return isAsc
-          ? aDate - bDate
-          : bDate - aDate
-      });
-      break;
+        return isAsc ? aDate - bDate : bDate - aDate
+      })
+      break
     case 'string':
       sortedData = data.sort((a, b) => {
-        const nameA = a[key].toUpperCase();
-        const nameB = b[key].toUpperCase();
+        const nameA = a[key].toUpperCase()
+        const nameB = b[key].toUpperCase()
         if (nameA < nameB) {
-          return isAsc
-            ? -1
-            : 1;
+          return isAsc ? -1 : 1
         }
         if (nameA > nameB) {
-          return isAsc
-            ? 1
-            : -1;
+          return isAsc ? 1 : -1
         }
-        return 0;
-      });
-      break;
+        return 0
+      })
+      break
   }
-  return sortedData;
+  return sortedData
 }
 
-const waitForTime = (millisecond) => {
+const waitForTime = millisecond => {
   return new Promise(resolve => setTimeout(resolve, millisecond))
 }
 

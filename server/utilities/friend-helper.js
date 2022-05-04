@@ -1,6 +1,6 @@
 'use strict'
 
-const Joi = require('@hapi/joi')
+const Joi = require('joi')
 Joi.objectId = Joi.string
 const Boom = require('@hapi/boom')
 const Friend = require('@models/friend.model').schema

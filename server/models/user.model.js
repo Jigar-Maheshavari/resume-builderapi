@@ -40,7 +40,6 @@ const UserSchema = new Schema(
     },
     role: {
       type: Types.String,
-      enum: ['USER', 'ADMIN'],
       default: 'USER'
     },
     isAccountVerified: {
@@ -71,7 +70,7 @@ const UserSchema = new Schema(
   }
 )
 
-UserSchema.pre('save', async function (next) {
+UserSchema.pre('save', async function(next) {
   const user = this
   if (user.isNew) {
     // Set Password & hash before save it
@@ -85,7 +84,7 @@ UserSchema.pre('save', async function (next) {
 })
 
 UserSchema.methods = {
-  generateHash: async function (key) {
+  generateHash: async function(key) {
     try {
       if (key === undefined) {
         key = Uuidv4()
@@ -103,7 +102,7 @@ UserSchema.methods = {
 }
 
 UserSchema.statics = {
-  findByCredentials: async function (email, password) {
+  findByCredentials: async function(email, password) {
     try {
       const self = this
 
@@ -134,7 +133,7 @@ UserSchema.statics = {
       errorHelper.handleError(err)
     }
   },
-  generateHash: async function (key) {
+  generateHash: async function(key) {
     try {
       if (key === undefined) {
         key = Uuidv4()
@@ -149,7 +148,7 @@ UserSchema.statics = {
       errorHelper.handleError(err)
     }
   },
-  getByEmail: async function (email) {
+  getByEmail: async function(email) {
     try {
       const self = this
       const query = { email: email }
